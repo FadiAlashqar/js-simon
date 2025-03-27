@@ -4,19 +4,23 @@ const countdown = document.getElementById('countdown');
 let seconds = 0;
 
 // CORPO DEL PROGRAMMA
-// const CountInterval = setInterval(function() {
-//     seconds++
-//     console.log(seconds)
-//     if (seconds <= 30) {
-//         countdown.innerText = seconds;
-        
-//     }
-//     else{
-//         clearInterval(CountInterval);
-//     }
-// }, 1000)
+const CountInterval = setInterval(function() {
+    seconds++
+    countdown.innerText = seconds;
 
-// NUMERI CASUALI
+    if (seconds === 30) {
+        let answersForm = document.getElementById('answers-form')
+        let numbersList = document.getElementById('numbers-list')
+        
+        answersForm.classList.remove("d-none");
+        numbersList.classList.add("d-none")
+        
+            clearInterval(CountInterval);
+    }
+}, 1000)
+
+
+// // NUMERI CASUALI
 
 let max = 50;
 
@@ -24,7 +28,7 @@ function randomNum(num) {
     return Math.floor(Math.random() * num) + 1;
 }
 
-const numbersList = document.getElementById('numbers-list')
+let numbersList = document.getElementById('numbers-list')
 
 for (let i = 0; i < 5; i++) {
     let generateNum = randomNum(max);
@@ -32,3 +36,4 @@ for (let i = 0; i < 5; i++) {
      list.textContent = generateNum;
      numbersList.appendChild(list);
 }
+
