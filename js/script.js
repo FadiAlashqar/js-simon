@@ -8,7 +8,7 @@ const CountInterval = setInterval(function() {
     seconds++
     countdown.innerText = seconds;
 
-    if (seconds === 10) {
+    if (seconds === 30) {
         let answersForm = document.getElementById('answers-form')
         let numbersList = document.getElementById('numbers-list')
         
@@ -40,6 +40,7 @@ for (let i = 0; i < 5; i++) {
 // CONTROLLO I NUMERI INSERITI E LI CONFROTNO CON QUELLI GENERATI, QUINDI DETERMINO QUANTI NUMERI COMBACIANO
 let answersForm = document.getElementById('answers-form')
 let button = document.querySelector('button')
+const message = document.getElementById('message')
 
 button.addEventListener('click', function(verify) {
     verify.preventDefault()
@@ -59,24 +60,23 @@ button.addEventListener('click', function(verify) {
             if (parseInt(text) === parseInt(value)) {
                 
                 correctNums.push(value);
-                
-                const message = document.getElementById('message')
-                message.innerText = (`hai indovinato ${correctNums.length} numeri :${value++}`)
+            
             }
             
         }   
         
     }
-    let output = "";
-    if (correctNums.length > 0) {
-        output = `Hai indovinato ${correctNums.length} numeri: ${correctNums.join(', ')}`;
-    } else {
-        output = "Non hai indovinato nessun numero!";
-    }
+                let output = "";
+                if (correctNums.length > 0) {
+                    output = `Hai indovinato ${correctNums.length} numeri: ${correctNums.join(', ')}`;
+                } 
+                else {
+                    output = "Non hai indovinato nessun numero!";
+                }
 
-    const message = document.getElementById('message');
-    message.innerText = output;
-   
+                const message = document.getElementById('message');
+                message.innerText = output;
+            
     
 })
 
